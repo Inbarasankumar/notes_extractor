@@ -1,56 +1,138 @@
-const UNIVERSAL_PROMPT = `Please create a comprehensive learning notes summary of our entire conversation and provide it as a downloadable markdown file.
+const UNIVERSAL_PROMPT = `Please create comprehensive learning notes from our conversation as SEPARATE markdown files for each distinct topic/concept discussed.
 
-## Required Structure (9 Sections):
+## 📚 Output Format: Multiple Topic-Based Files
 
-### 1. 🎯 Primary Request and Intent
-- What is the user trying to accomplish?
-- Why do they need this?
-- What problem are they solving?
+**IMPORTANT: Create one markdown file for each major topic/concept we discussed.**
 
-### 2. 🔧 Key Technical Concepts
-- List all technologies, frameworks, and concepts discussed
-- For each: What it is, why it's relevant, comparisons to similar tech
+### For Each Topic File:
 
-### 3. 📁 Files and Code Sections
-- All files created, modified, or discussed with full paths
-- Purpose, importance, and key sections of each file
-- Include relevant code snippets with proper syntax highlighting
+**File Structure:**
+\`\`\`markdown
+# 📘 [Topic Name]
 
-### 4. 🐛 Errors and Fixes
-- Document all errors encountered
-- For each: Error message, cause, solution, prevention tips
+**📍 Context: Where I Used This**
+- Project/Service: [Name of project where this was used]
+- Why I needed it: [Brief reason]
+- What problem it solved: [The problem]
 
-### 5. 💡 Problem Solving
-- Problem-solving approach used
-- Debugging steps taken
-- Important discoveries and insights
-- Alternative solutions considered
+**📅 Metadata**
+- Date: [Date]
+- Session: [Brief session context]
+- Related Topics: [Links to other topic files]
 
-### 6. 💬 All User Messages
-- List every user message in chronological order (numbered)
-- Include the exact text of each message
+---
 
-### 7. ⏳ Pending Tasks
-- Tasks started but not completed
-- Use checkboxes: \`- [ ] Task description\`
-- Priority indicators: 🔴 High, 🟡 Medium, 🟢 Low
+## 🎯 Overview
+[Brief 2-3 sentence overview of what this topic is]
 
-### 8. 🚀 Current Work
-- What was being worked on before this prompt
-- Current state and any blockers
+## 🔄 My Learning Journey
+### Initial Approach
+- What I initially thought/tried: [Description]
+- Why that approach: [Reasoning]
 
-### 9. ➡️ Next Steps
-- 2-3 specific, actionable recommendations
-- Logical next steps based on the conversation
+### Better Approach Discovered
+- What was recommended: [New approach]
+- Why it's better: [Comparison with pros/cons]
+- Key advantages: [List]
+- Trade-offs: [What you give up]
 
-## Formatting Requirements:
-- Title: \`# 📚 Learning Notes: [Topic]\`
-- Add metadata: Date, Platform, Session Duration
-- Use proper markdown with code blocks, tables, emojis
-- Make it Notion-importable
-- Be thorough - don't abbreviate technical content
+## 🔧 Technical Details
+[Detailed explanation of the concept]
+- How it works
+- Key components
+- Architecture/Design patterns
+- Code examples with explanations
 
-**Create the summary as a downloadable .md file that can be directly imported to Notion.**`;
+## 🐛 Issues & Solutions
+[Any errors or problems encountered while learning this]
+
+## 💡 Key Insights
+[Important discoveries and "aha!" moments]
+
+## 🔗 Related Concepts
+[Other topics that connect to this one]
+
+## ✅ When to Use This
+[Practical guidelines on when this approach is appropriate]
+
+## 📚 Resources
+[Any references or documentation mentioned]
+\`\`\`
+
+---
+
+## 📋 Required Coverage:
+
+### 1. Create Master Index File: \`00-Session-Index.md\`
+- List all topic files created
+- Brief description of each
+- Conversation metadata (date, platform, duration)
+- Overall context of the session
+
+### 2. Create Separate Topic Files:
+
+Identify all distinct topics discussed and create individual files:
+
+**Technical Concepts** (e.g., "S3-Presigned-URLs.md", "CloudFront-CDN.md")
+- Full technical explanation
+- Where I used it (which project/service)
+- Code examples
+
+**Architectural Decisions** (e.g., "Image-Upload-Architecture.md")
+- Initial approach vs chosen approach
+- Comparison table with pros/cons
+- Why one was selected over another
+- Trade-offs analysis
+
+**Problem-Solutions** (e.g., "Fixing-CORS-Issues.md")
+- The problem encountered
+- What caused it
+- Solution steps
+- Prevention tips
+
+**Tools/Libraries** (e.g., "AWS-CDK-Setup.md")
+- What it is and why used
+- Setup/configuration
+- Usage examples
+
+### 3. Naming Convention:
+- Use kebab-case: \`Topic-Name-Here.md\`
+- Number files by importance: \`01-Main-Topic.md\`, \`02-Secondary-Topic.md\`
+- Use descriptive names that indicate content
+
+### 4. Cross-Linking:
+- Link related topics to each other
+- Use relative links: \`[S3 Presigned URLs](./S3-Presigned-URLs.md)\`
+
+---
+
+## 🎯 Example Output Structure:
+
+\`\`\`
+00-Session-Index.md
+01-Image-Upload-Architecture.md
+02-S3-Presigned-URLs.md
+03-S3-Bucket-Configuration.md
+04-CloudFront-CDN-Setup.md
+05-AWS-CDK-Basics.md
+\`\`\`
+
+Each file focused on ONE topic with context of where/why I used it.
+
+---
+
+## ✅ Quality Checklist:
+
+- [ ] Each topic has its own file
+- [ ] Every file mentions WHERE it was used (which project/service)
+- [ ] Learning journey documented (initial → better approach)
+- [ ] Code examples included with explanations
+- [ ] Related topics cross-linked
+- [ ] All files use proper markdown formatting
+- [ ] Master index file created
+- [ ] Files are Notion-importable
+
+**Please analyze our conversation and create separate, well-organized markdown files as downloadable artifacts.**`;
 
 // Load and display statistics when popup opens
 document.addEventListener('DOMContentLoaded', () => {
